@@ -1,0 +1,5 @@
+https://jfrog.com/artifactory/start-free/#saas
+
+Note: login id is ÿour email id and password is which you entered while creating. 
+
+$ curl -v --user nageswararao:password --data-binary @local-file -X PUT "http://<artifactory server >/artifactory/abc-snapshot-local/remotepath/remotefile"
