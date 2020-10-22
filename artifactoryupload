@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        label "AgentName"
+    }
+    triggers {
+        pollSCM '* * * * *'
+    }
+    stages {
+        stage('SCM') {
+            steps {
+                git branch: 'develop', credentialsId: 'jenkins', url: 'https://github.com/anrdevops99/hms.git'
+            }
+        }
+        stage('Upload Artifact') {
+            steps {
+                echo 'Upload Artifact'
+                sh 'curl -sSf -H "X-JFrog-Art-Api:asdfasdfasdfsdf" \
+                    -X PUT \
+                    -T hms.zip \
+                    "http://artifactoryURL.com/develop/"'
+            }
+        }
+    }
+}
+
